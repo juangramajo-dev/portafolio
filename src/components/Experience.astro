@@ -1,0 +1,39 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+const EXPERIENCE = [
+  {
+    date: "Actualmente...",
+    title:
+      "En busca de mi primera oportunidad de trabajo en una empresa de tecnología",
+    company: "Buscando ofertas",
+    description:
+      "Buscando oportunidades de trabajo en diferentes empresas y proyectos. Me interesa aprender y me gusta trabajar en equipo.",
+  },
+  {
+    date: "2022 | 2024",
+    title: "Profesor",
+    company: "Instituto Salvador",
+    description:
+      'Imparto el curso "Desarrollo web desde cero" en el Instituto Salvador, donde me dedico a formar y capacitar a los estudiantes en un entorno de aprendizaje en línea. A través de este curso, enseño las bases de la programación y desarrollo web, así como habilidades clave de comunicación y colaboración para impulsar su crecimiento profesional.',
+    link: "https://desarrolloweb-institutosalvador.netlify.app/",
+  },
+  {
+    date: "2022 | 2024",
+    title: "Soporte en sistemas",
+    company: "Instituto Salvador",
+    description:
+      "Brindo soporte técnico en los sistemas del Instituto, tanto en Génesis como en el Campus Virtual(el cual también desarrollé utilizando la plataforma Moodle). Me encargo de su mantenimiento continuo y de optimizar su rendimiento para garantizar un funcionamiento eficiente.",
+    link: "https://campusinstitutosalvador.online",
+  },
+];
+---
+
+<ol class="relative">
+  {
+    EXPERIENCE.map((experience) => (
+      <li>
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>

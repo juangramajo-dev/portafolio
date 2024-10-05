@@ -1,0 +1,62 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import AboutMe from "@/components/AboutMe.astro";
+import Briefcase from "@/components/icons/Briefcase.astro";
+import CodeIcon from "@/components/icons/Code.astro";
+import Experience from "@/components/Experience.astro";
+import ProfileCheck from "@/components/icons/ProfileCheck.astro";
+import Projects from "@/components/Projects.astro";
+import SectionContainer from "@/components/SectionContainer.astro";
+import Hero from "@/components/Hero.astro";
+import TitleSection from "@/components/TitleSection.astro";
+import Certificate from "@/components/Certificate.astro";
+import Certificates from "@/components/icons/Certificates.astro";
+---
+
+<Layout
+  title="Portafolio de Juan Gramajo - Desarrollador y Programador Web"
+  description="Contrata a Juan Gramajo, desarrollador web especializado en crear aplicaciones únicas y personalizadas. Transformo ideas en soluciones digitales eficientes, diseñadas para destacar y satisfacer las necesidades específicas de tu negocio."
+>
+  <main class="px-4">
+    <SectionContainer class="py-16 md:py-36">
+      <Hero />
+    </SectionContainer>
+  </main>
+  <div class="space-y-2">
+    <SectionContainer id="experiencia">
+      <TitleSection>
+        <Briefcase class="size-8" />
+        Experiencia laboral
+      </TitleSection>
+      <Experience />
+    </SectionContainer>
+
+    <SectionContainer id="certificados">
+      <TitleSection>
+        <Certificates class="size-8" />
+        Certificados
+      </TitleSection>
+      <Certificate />
+    </SectionContainer>
+
+    <SectionContainer id="proyectos">
+      <div class="mt-20"></div>
+
+      <TitleSection>
+        <CodeIcon class="size-8" />
+        Proyectos
+      </TitleSection>
+      <Projects />
+    </SectionContainer>
+
+    <SectionContainer id="sobre-mi">
+      <div class="mt-20"></div>
+      <TitleSection>
+        <ProfileCheck class="size-8" />
+        Sobre mí
+      </TitleSection>
+      <AboutMe />
+    </SectionContainer>
+  </div>
+</Layout>

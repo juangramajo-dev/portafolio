@@ -1,0 +1,110 @@
+---
+import LinkInline from "./LinkInline.astro";
+
+interface Props {
+  id: number;
+  title: string;
+  img: string;
+  site: string;
+  link?: string;
+}
+
+const { title, site, link, img } = Astro.props;
+---
+
+<div class="w-full flex justify-center items-center">
+  <section>
+    <div class="card">
+      <figure>
+        <img src={img} width="400" alt={title} />
+        <figcaption>
+          <h3 class="text-base font-bold me-2">{title}</h3>
+          <p>{site}</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div>
+      <LinkInline href={link}>
+        <span class="text-accentLight dark:text-accentDark">
+          Ver contenido del curso
+        </span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 icon icon-tabler icon-tabler-chevron-right"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M9 6l6 6l-6 6"></path>
+        </svg>
+      </LinkInline>
+    </div>
+  </section>
+</div>
+
+<style>
+  .card {
+    position: relative;
+    left: 0;
+    width: 15rem;
+    height: 10rem;
+    border-radius: 0.5rem;
+    transition: 1000ms all;
+    transform-origin: center left;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+  }
+
+  .card img {
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 0.25rem;
+  }
+
+  .card:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+
+  @keyframes cardFade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .card:hover figcaption {
+    animation: cardFade 0.3s ease-in-out;
+    font-size: 0.6rem;
+    position: absolute;
+    height: 5rem;
+    width: 15rem;
+    display: flex;
+    align-items: end;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    color: white;
+    left: 0;
+    bottom: 0;
+    padding-left: 0.75rem;
+    padding-bottom: 0.65rem;
+  }
+
+  .card:hover ~ .card {
+    font-weight: bold;
+    cursor: pointer;
+    transform: translateX(1.3rem);
+  }
+</style>

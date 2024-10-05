@@ -1,0 +1,32 @@
+---
+import Badge from "@/components/Badge.astro";
+import SectionContainer from "@/components/SectionContainer.astro";
+import SocialPill from "@/components/SocialPill.astro";
+import LinkedInIcon from "@/components/icons/LinkedIn.astro";
+
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout
+  title="Juan Gramajo"
+  description="Contrata a Juan Gramajo, desarrollador web especializado en crear aplicaciones únicas y personalizadas. Transformo ideas en soluciones digitales eficientes, diseñadas para destacar y satisfacer las necesidades específicas de tu negocio."
+>
+  <SectionContainer class="flex flex-col">
+    <article class="mb-10">
+      <h1 class="mb-4 text-xl font-semibold">&lt;Badge /&gt;</h1>
+
+      <Badge>Disponible para trabajar</Badge>
+    </article>
+
+    <article class="mb-10">
+      <h1 class="mb-4 text-xl font-semibold">&lt SocialPill /&gt;</h1>
+
+      <div class="flex">
+        <SocialPill href="https://www.linkedin.com/in/juangramajo">
+          <LinkedInIcon class="size-4 md:size-6" />
+          LinkedIn
+        </SocialPill>
+      </div>
+    </article>
+  </SectionContainer>
+</Layout>

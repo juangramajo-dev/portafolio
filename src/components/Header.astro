@@ -1,0 +1,145 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+
+const navItems = [
+  {
+    title: "Experiencia",
+    label: "experiencia",
+    url: "/#experiencia",
+  },
+  {
+    title: "Cursos",
+    label: "certificados",
+    url: "/#certificados",
+  },
+  {
+    title: "Proyectos",
+    label: "proyectos",
+    url: "/#proyectos",
+  },
+  {
+    title: "Sobre mí",
+    label: "sobre-mi",
+    url: "/#sobre-mi",
+  },
+  {
+    title: "Contacto",
+    label: "contacto",
+    url: "tel:+5493804525494",
+  },
+];
+---
+
+<header
+  class="fixed bg-gray-800 py-3 backdrop-blur mt-0 top-0 z-10 w-full mx-auto fade-in md:justify-center md:items-center md:flex md:bg-transparent"
+>
+  <div class="flex justify-between items-center px-4 md:hidden">
+    <button id="hamburger-btn" class="focus:outline-none">
+      <svg
+        class="w-6 h-6 text-gray-600 dark:text-gray-200"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Menú desplegable para pantallas pequeñas -->
+  <nav
+    id="mobile-menu"
+    class="hidden flex-col items-center px-3 space-y-4 md:flex md:space-y-0 md:space-x-6 text-sm font-medium text-gray-600 dark:text-gray-200 dark:bg-gray-800/90 rounded-md p-4 md:rounded-sm md:w-[70%] md:flex-row md:bg-transparent md:items-center md:justify-center md:dark:bg-transparent"
+  >
+    {
+      navItems.map((link) => (
+        <a
+          class="block px-2 py-2 transition hover:text-accentLight hover:scale-105 dark:hover:text-accentDark dark:hover:scale-105"
+          aria-label={link.label}
+          href={link.url}
+        >
+          {link.title}
+        </a>
+      ))
+    }
+    <div class="hidden md:block">
+      <ThemeToggle />
+    </div>
+  </nav>
+</header>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    // Alternar menú en pantallas pequeñas
+    hamburgerBtn?.addEventListener("click", () => {
+      mobileMenu?.classList.toggle("hidden");
+    });
+
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll("header nav a");
+
+    const callback = (entries: any) => {
+      entries.forEach((entry: any) => {
+        if (entry.isIntersecting) {
+          navItems.forEach((item) => {
+            if (item.getAttribute("aria-label") == entry.target.id) {
+              item.classList.add("text-accentDark");
+            } else {
+              item.classList.remove("text-accentDark");
+            }
+          });
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3,
+    });
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Cleanup function
+    document.onvisibilitychange = () => {
+      if (document.visibilityState === "hidden") {
+        observer.disconnect();
+      } else {
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
+      }
+    };
+  });
+</script>
+
+<style>
+  nav {
+    animation: nav-shadown 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
+  }
+
+  nav {
+    @apply dark:bg-gray-800/90 bg-white/50;
+  }
+
+  @keyframes nav-shadown {
+    0% {
+      @apply dark:bg-gray-800/0 bg-white/0;
+    }
+    to {
+      @apply shadow-lg ring-1 backdrop-blur ring-white/10;
+    }
+  }
+</style>

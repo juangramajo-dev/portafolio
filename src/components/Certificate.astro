@@ -1,0 +1,79 @@
+---
+import CertificateItem from "./CertificateItem.astro";
+
+const CERTIFICATE = [
+  {
+    id: 1,
+    title: "HTML desde cero",
+    site: "ED Teams",
+    img: "certificates/certificado-curso-html.png",
+    link: "https://ed.team/cursos/html",
+  },
+  {
+    id: 2,
+    title: "Flujo de trabajo en equipo con Git",
+    site: "ED Teams",
+    img: "certificates/Certificado-Git-EdTeam.png",
+    link: "https://ed.team/cursos/git-workflow",
+  },
+  {
+    id: 3,
+    title: "UX para principiantes",
+    site: "ED Teams",
+    img: "certificates/Certificado-UX-para-principiantes-EdTeam.png",
+    link: "https://ed.team/cursos/ux",
+  },
+  {
+    id: 4,
+    title: "React Hooks con TypeScript",
+    site: "ED Teams",
+    img: "certificates/certificado-curso-react-hooks.png",
+    link: "https://ed.team/cursos/react-hooks",
+  },
+  {
+    id: 5,
+    title: "Curso de CSS",
+    site: "Código facilito",
+    img: "certificates/Certificado Curso CSS - Código Facilito.jpg",
+    link: "https://codigofacilito.com/cursos/css-fundamentos",
+  },
+  {
+    id: 6,
+    title: "Curso profesional de JavaScript",
+    site: "Código facilito",
+    img: "certificates/curso-profesional-javascript.jpg",
+    link: "https://codigofacilito.com/cursos/javascript-profesional",
+  },
+  {
+    id: 7,
+    title: "JavaScript moderno",
+    site: "Código facilito",
+    img: "certificates/javascript-moderno.jpg",
+    link: "https://codigofacilito.com/programas/react-g3",
+  },
+  {
+    id: 8,
+    title: "Introducción a React y JSX",
+    site: "Código facilito",
+    img: "certificates/react-y-jsx.jpg",
+    link: "https://codigofacilito.com/programas/react-g3",
+  },
+  {
+    id: 9,
+    title: "Introducción a Tailwind",
+    site: "Código facilito",
+    img: "certificates/curso-tailwind.jpg",
+    link: "https://codigofacilito.com/cursos/tailwind",
+  },
+];
+---
+
+<ol class="flex flex-wrap gap-8 list-none justify-center">
+  {
+    CERTIFICATE.map((certificado) => (
+      <li class="w-full sm:w-auto">
+        <CertificateItem {...certificado} />
+      </li>
+    ))
+  }
+</ol>

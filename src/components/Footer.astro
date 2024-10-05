@@ -1,0 +1,28 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="mt-20">
+  <div class="flex flex-col items-center">
+    <ul
+      class="flex flex-wrap items-center justify-center mt-3 text-sm font-medium dark:text-white/90 sm:mt-0"
+    >
+      <li>
+        <a href="/" class="hover:underline me-4 md:me-6">Inicio</a>
+      </li>
+      <li>
+        <a
+          id="contacto"
+          href="mailto:info@juangramajo.dev"
+          class="hover:underline">Contacto</a
+        >
+      </li>
+    </ul>
+    <span
+      class="text-sm my-3 text-center text-zinc-800/90 dark:text-zinc-200/90"
+      >© {currentYear}
+      <a href="https://juangramajo.dev/" class="hover:underline">Juan Gramajo</a
+      >. Todos los derechos reservados
+    </span>
+  </div>
+</footer>
